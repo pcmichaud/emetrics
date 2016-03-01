@@ -11,8 +11,8 @@ import numpy as np
 Ptwo = np.ones((2,2))
 Ptwo[0,0] = 0.8
 Ptwo[0,1] = 0.2
-Ptwo[1,0] = 0.0
-Ptwo[1,1] = 1.0
+Ptwo[1,0] = 0.1
+Ptwo[1,1] = 0.9
 print "two-year transition = \n",Ptwo
 
 # get eigen values and vectors
@@ -31,3 +31,14 @@ print "one-year transition = \n",Pone
 Ptwo_check = np.dot(Pone,Pone)
 
 print "check for two transitions \n", Ptwo_check
+
+# write a function
+def scalemarkov(Pk, k, j):
+    w,v = np.linalg.eig(Pk)
+    scale = np.float(j)/np.float(k)
+    sw = np.diag(w**scale)
+    return np.dot(np.dot(v, sw) , np.linalg.inv(v))
+    
+Pone_test = scalemarkov(Ptwo,2,1)    
+
+print "using function \n", Pone_test
