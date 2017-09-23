@@ -1,0 +1,48 @@
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{epstopdf}
+\usepackage{amssymb}
+\usepackage[pdf]{pstricks}
+\usepackage{subfig}
+\usepackage[colorlinks]{hyperref}
+\usepackage[sort&compress]{natbib}
+\usepackage{listings}
+\title{Example of Stata-Generated Tables and Natlib References}
+\author{Pierre-Carl Michaud \\ HEC Montreal}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The descriptive statistics you asked are reproduced in Table \ref{tab:desc}. 
+
+\begin{table}[htp]
+\centering
+\input{means.tex}
+\caption{Descriptive Statistics from Estimation Sample}
+\label{tab:desc}
+\end{table}
+
+You should know that \citep{lusardi_financial_2011} found exactly the same thing. Other studies have found the same thing \citet{lusardi_financial_2011}.
+
+
+The stata code is reproduced in the appendix (See Listing \ref{lst:stata}). 
+
+
+\bibliography{refs}
+\bibliographystyle{apalike}%{plainnat} %{plain-annote}
+
+\newpage
+
+\appendix
+
+\section*{Appendix: Stata Code}
+\lstinputlisting[basicstyle=\tiny,label=lst:stata, frame=single,caption=Contents of test.do,captionpos=b]{test.do}
+
+\end{document}
