@@ -1,0 +1,10 @@
+Example of a project directory with a fortran module
+
+What you need to do: 
+- start with the makefile, understand the syntax. No need aftewards to remember how to compile
+- study the src directory (source) which contains the raw code
+- understand where things go (other directories)
+- do "make" (will compile)
+- go to runtime directory and execute runmodel
+- check that output created
+- check out the readsim.do file in the do directory to see how to read a simulated dataset

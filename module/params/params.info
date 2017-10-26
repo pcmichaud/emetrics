@@ -1,0 +1,5 @@
+npar, 2
+sigma, 4.0d0
+beta, 0.97d0
+agemin, 20
+agemax, 100

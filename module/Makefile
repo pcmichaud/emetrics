@@ -11,17 +11,17 @@
 # Change this line if you are using a different Fortran compiler
 FORTRAN_COMPILER = gfortran
 FFLAGS = -fbounds-check
-
-MAIN =  runmodel 
-SRC = model.o runmodel.f90 
+OBJ = obj
+MAIN =  runtime/runmodel 
+SRC = $(OBJ)/model.o src/runmodel.f90 
 all: $(MAIN) 
 	@echo 'Compiled Code !'
 
 $(MAIN): $(SRC)
-	$(FORTRAN_COMPILER) $(SRC) -O3 -o runmodel  $(FFLAGS)  
+	$(FORTRAN_COMPILER) $(SRC) -J$(OBJ) -O3 -o runtime/runmodel  $(FFLAGS)  
 
-model.o: model.f90
-	$(FORTRAN_COMPILER)  -O3 -c $< -o $@  $(FFLAGS) 
+$(OBJ)/model.o: src/model.f90
+	$(FORTRAN_COMPILER)  -O3 -J$(OBJ) -c $< -o $@  $(FFLAGS) 
 
 clean:
-	rm -f *.mod runmodel *.o *.dat
+	rm -f $(OBJ)/*.mod $(OBJ)/*.o runtime/runmodel output/*.dat
