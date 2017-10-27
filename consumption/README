@@ -1,0 +1,11 @@
+Simple Recursion for optimal consumption with infinite horizon
+Pierre-Carl Michaud, 2017
+
+Example to learn how to solve for optimal consumption in a simple model with stochastic (AR(1)) earnings and infinite horizon. 
+The rules are solved by discretizing the state-space and using the following tools: 
+- Tauchen approximation of stochastic process
+- Golden section search
+- lineary intrapolation on a square root grid. 
+
+A stata do-file is also provided to plot the consumption decision rules against cash-on-hand. 
+
