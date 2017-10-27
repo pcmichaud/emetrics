@@ -1,0 +1,19 @@
+Example of Classical Estimation using MCMC based on 
+
+Chernozhukov, Victor, et Han Hong. « An MCMC approach to classical estimation ». Journal of Econometrics 115, nᵒ 2 (1 août 2003): 293‑346. https://doi.org/10.1016/S0304-4076(03)00100-3.
+
+Implementation of Metropolis-Hastings using the adaptive approach in:
+
+Haario, Heikki, Eero Saksman, et Johanna Tamminen. « An adaptive Metropolis algorithm ». Bernoulli 7, nᵒ 2 (avril 2001): 223‑42.
+
+A probit model of type y(i) = I(x(i)*beta + eps(i)>0), with eps(i)~N(0,1) is simulated. 
+
+The files contained are: 
+- dcdflib.f (and a): probability library
+- mcmc.f90 : main program
+- pdfs of the two papers above. 
+- A makefile
+
+The executable is runchain. 
+
+
