@@ -82,9 +82,9 @@ program main
 			pi = newpi
 		end if		
 		! update mean and covariance of chain
-		mean = (dble(c-1)*oldmean + state)/dble(c)
-		cov = (dble(c-1)/dble(c))*cov + tune/dble(c) * (dble(c)*matmul(oldmean,transpose(oldmean)) &
-				- dble(c+1)*matmul(mean,transpose(mean)) + matmul(state,transpose(state)) + eps*eye)
+		mean = (dble(i-1)*oldmean + state)/dble(i)
+		cov = (dble(i-1)/dble(i))*cov + tune/dble(i) * (dble(i)*matmul(oldmean,transpose(oldmean)) &
+				- dble(i+1)*matmul(mean,transpose(mean)) + matmul(state,transpose(state)) + eps*eye)
 		oldmean = mean
 		if (i .ge. start_keep) then
 			chain(:, i - start_keep + 1) = state(:,1)
