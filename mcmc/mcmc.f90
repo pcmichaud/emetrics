@@ -121,7 +121,7 @@ end function
 
 subroutine proposal(cov, par, newpar, k, free)
 	integer k, i
-	double precision par(k), newpar(k), draw(k), quann, cov(k,k), d
+	double precision par(k), newpar(k), draw(k), quann, cov(k,k), d, chol(k,k)
 	logical free
 	call random_number(d)
 	! take random gaussian draws
@@ -130,7 +130,9 @@ subroutine proposal(cov, par, newpar, k, free)
 		draw(i) = quann(d)
 	end do
 	! apply covariance
-	draw = matmul(cov,draw)
+	chol = cov
+	call cholesky(chol,k)
+	draw = matmul(chol,draw)
 	newpar = par + draw
 end subroutine proposal
 
@@ -171,6 +173,30 @@ double precision function quann(prob)
 	!quann = g01faf('L',prob,ifail)
 	!write(*,*) prob
 end function
+
+subroutine cholesky(A,n)
+
+
+  ! formal vars
+  integer :: n      ! number of rows/cols in matrix
+  double precision    :: A(n,n) ! matrix to be decomposed
+
+  ! local vars
+  integer :: j      ! iteration counter
+
+  ! begin loop
+  do j = 1,n
+
+    ! perform diagonal component
+    A(j,j) = sqrt(A(j,j) - dot_product(A(j,1:j-1),A(j,1:j-1)))
+
+    ! perform off-diagonal component
+    if (j < n) A(j+1:n,j) = (A(j+1:n,j) - matmul(A(j+1:n,1:j-1),A(j,1:j-1))) / &
+   &           A(j,j)
+
+  end do
+
+end subroutine cholesky
 
 ! http://jean-pierre.moreau.pagesperso-orange.fr/Fortran/sort1_f90.txt
 subroutine sort(n,x)
