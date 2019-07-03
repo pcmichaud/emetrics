@@ -13,7 +13,7 @@ FORTRAN_COMPILER = gfortran
 FFLAGS = -fbounds-check
 OBJ = obj
 MAIN =  runchain 
-SRC = mcmc.f90 
+SRC = sim.f90 
 all: $(MAIN) 
 	@echo 'Compiled Code !'
 

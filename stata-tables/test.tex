@@ -18,8 +18,20 @@
 \begin{document}
 \maketitle
 
-\section{Introduction}
+\section{Summary Stats}
 
+\subsection{Estout package}
+
+The stats are produced here in Table \ref{tab:desc-estout}
+
+\begin{table}[htp]
+  \centering
+  \input{stats.tex}
+  \caption{Descriptive Statistics by Gender}
+  \label{tab:desc-estout}
+\end{table}
+
+\subsection{Brut Force}
 The descriptive statistics you asked are reproduced in Table \ref{tab:desc}. 
 
 \begin{table}[htp]
@@ -33,6 +45,15 @@ You should know that \citep{lusardi_financial_2011} found exactly the same thing
 
 
 The stata code is reproduced in the appendix (See Listing \ref{lst:stata}). 
+
+\section{Regression Tables}
+
+\begin{table}[htp]
+  \centering
+  \input{reg.tex}
+  \caption{Regression Estimates by Gender}
+  \label{tab:reg-gender}
+\end{table}
 
 
 \bibliography{refs}
